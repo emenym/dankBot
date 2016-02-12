@@ -15,6 +15,7 @@ import giphypop
 import json, os, datetime, random
 
 import devcmd
+import hipchat_api
 
 imgur_id = os.environ.get('imgur_id', None)
 imgur_secret = os.environ.get('imgur_secret', None)
@@ -38,11 +39,11 @@ def imgur_search(search=""):
         return u'derp, something bad happened: {0}'.format(e.error_message)
 
     if len(items) > 0:
-	item = random.choice(items)
+        item = random.choice(items)
         if item.is_album:
             try:
                 items = client.get_album_images(item.id)
-	        item = items[0]
+                item = items[0]
             except ImgurClientError as e:
                 return u'derp, something bad happened: {0}'.format(e.error_message)
         item = item.link
@@ -136,6 +137,8 @@ def handle():
         message = google_search(search=parsed)
     elif command == u'/halp':
         message = "bro use /dank for imgur, /jank for giphy, /gank for goog"
+    elif command == u'/setup':
+        message = hipchat_api.setup_webhooks(room )
     else:
         message = "welp! command not found: {0}".format(command)
 

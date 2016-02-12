@@ -1,0 +1,26 @@
+{
+   "key" : "dankBot_test",
+   "vendor" : {
+      "url" : "https://twitter.com/gelstudios",
+      "name" : "Eric Romano" },
+   "version" : "1.0.0",
+   "name" : "dankBot_test",
+   "links" : {
+      "self" : "http://imgur-hipchat-test.herokuapp.com/test_capabilities",
+      "homepage" : "https://twitter.com/gelstudios"},
+   "capabilities" : {
+      "webhook" : [ {
+         "pattern" : "^/setup ",
+         "url" : "http://imgur-hipchat-test.herokuapp.com",
+         "event" : "room_message" }],
+      "hipchatApiConsumer" : {
+        "avatar" : {
+          "url" : "http://i.imgur.com/4TUtSHn.gif",
+          "url@2x" : "http://i.imgur.com/4TUtSHn.gif" },
+        "fromName" : "dankBot_test",
+        "scopes" : [ "send_notification"] },
+      "installable" : {
+         "allowGlobal" : true,
+         "allowRoom" : true } },
+   "description" : "The dankest bot in all the land. searches imgur, giphy, and google. Use /halp for more info."
+}
