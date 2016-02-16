@@ -39,7 +39,11 @@ WEBHOOKS = {
 def setup_webhooks(room):
     hook_id = 0
     for hook in WEBHOOKS:
-        requests.put(url=API_URL+'room/'+room+'/extension/webhook/'+str(hook_id), data=json.dumps(WEBHOOKS.get(hook)))
+        response = requests.put(url=API_URL+'room/'+room+'/extension/webhook/'+str(hook_id), data=json.dumps(WEBHOOKS.get(hook)))
+        print ("""[dankBot] status_code="{0}" text="{1}" json="{2}".""").format(
+            response.status_code,
+            response.text,
+            response.json)
         hook_id += 1
 
 
