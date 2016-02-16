@@ -39,7 +39,7 @@ WEBHOOKS = {
 def setup_webhooks(room):
     hook_id = 0
     for hook in WEBHOOKS:
-        requests.put(url=API_URL+'room/'+room+'/extension/webhook/'+hook_id, data=json.dumps(WEBHOOKS.get(hook)))
+        requests.put(url=API_URL+'room/'+room+'/extension/webhook/'+str(hook_id), data=json.dumps(WEBHOOKS.get(hook)))
         hook_id += 1
 
 
